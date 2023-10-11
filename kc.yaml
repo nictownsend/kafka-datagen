@@ -3,6 +3,8 @@ kind: KafkaConnect
 metadata:
    name: kc
    namespace: es
+   annotations:
+    eventstreams.ibm.com/use-connector-resources: 'true'
 spec:
   bootstrapServers: 'light-insecure-kafka-bootstrap:9092'
   build:
