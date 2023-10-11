@@ -1,10 +1,9 @@
 apiVersion: eventstreams.ibm.com/v1beta2
 kind: KafkaConnect
 metadata:
-   name: kc
-   namespace: es
-   annotations:
+  annotations:
     eventstreams.ibm.com/use-connector-resources: 'true'
+  namespace: es
 spec:
   bootstrapServers: 'light-insecure-kafka-bootstrap:9092'
   build:
@@ -15,7 +14,7 @@ spec:
       - artifacts:
           - type: jar
             url: >-
-              https://github.com/nictownsend/kafka-datagen/blob/main/kafka-connect-datagen-0.7.0-SNAPSHOT.jar
+              https://github.com/nictownsend/kafka-datagen/raw/main/kafka-connect-datagen-0.7.0-SNAPSHOT.jar
         name: datagen
   config:
     config.storage.topic: connect-cluster-configs
@@ -53,3 +52,5 @@ spec:
           productName: IBM Event Streams for Non Production
           eventstreams.production.type: CloudPakForIntegrationNonProduction
           productMetric: VIRTUAL_PROCESSOR_CORE
+  replicas: 1
+  url: 'http://kc-connect-api.es.svc:8083'
