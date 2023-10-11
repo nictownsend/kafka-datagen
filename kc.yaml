@@ -39,6 +39,7 @@ spec:
         readOnlyRootFilesystem: true
         runAsNonRoot: true
     pod:
+      imagePullSecrets: []
       metadata:
         annotations:
           cloudpakId: c8b82d189e7545f0892db9ef2731b90d
